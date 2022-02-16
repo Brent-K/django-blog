@@ -7,15 +7,18 @@ from django.views.generic.detail import DetailView
 
 
 class PubPostListView(ListView):
-    pub_posts = 'blog_index'
-    queryset = Post.objects.exclude(published_date__exact=None).order_by('-published_date')
-    template_name = 'blogging/list.html'
-    
+    pub_posts = "blog_index"
+    queryset = Post.objects.exclude(published_date__exact=None).order_by(
+        "-published_date"
+    )
+    template_name = "blogging/list.html"
+
 
 class PostDetailView(DetailView):
-    detail_posts = 'blog_detail'
+    detail_posts = "blog_detail"
     queryset = Post.objects.exclude(published_date__exact=None)
-    template_name = 'blogging/detail.html'
+    template_name = "blogging/detail.html"
+
 
 def stub_view(requests, *args, **kwargs):
     body = "Stub View\n\n"
@@ -26,4 +29,3 @@ def stub_view(requests, *args, **kwargs):
         body += "Kwargs:\n"
         body += "\n".join(["\t%s: %s" % i for i in kwargs.items()])
     return HttpResponse(body, content_type="text/plain")
-
