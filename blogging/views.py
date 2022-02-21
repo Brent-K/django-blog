@@ -2,10 +2,10 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.template import loader
 from blogging.models import Post
+from blogging.forms import MyCommentForm
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.utils import timezone
-from blogging.forms import MyCommentForm
 
 
 def add_model(request):
