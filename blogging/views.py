@@ -1,5 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django import forms
 from django.template import loader
 from blogging.models import Post
 from blogging.forms import MyCommentForm
