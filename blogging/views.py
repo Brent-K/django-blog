@@ -19,7 +19,7 @@ def add_model(request):
             return redirect("/")
     else:
         form = MyCommentForm()
-        return render(request, "add.html", {"form": form})
+        return render(request, "blogging/add.html", {"form": form})
 
 
 class PubPostListView(ListView):
