@@ -2,8 +2,23 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.template import loader
 from blogging.models import Post
+from blogging.forms import MyCommentForm
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.utils import timezone
+
+
+def add_model(request):
+    if request.method == "POST":
+        form = MyCommentForm(request.POST)
+        if form.is_valid():
+            model_instance = form.save(commit=False)
+            model_instance.timestamp = timezone.now()
+            model_instance.save()
+            return redirect("/")
+    else:
+        form = MyCommentForm()
+        return render(request, "add.html", {"form": form})
 
 
 class PubPostListView(ListView):
