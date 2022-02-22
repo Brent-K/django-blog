@@ -5,4 +5,4 @@ from blogging.models import Post
 class MyCommentForm(ModelForm):
     class Meta:
         model = Post
-        fields = ["title", "text"]
+        fields = "__all__"
