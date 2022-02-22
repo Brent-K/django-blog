@@ -5,4 +5,4 @@ from blogging.models import Post
 class MyCommentForm(ModelForm):
     class Meta:
         model = Post
-        fields = "__all__"
+        exclude = ["published_date"]
