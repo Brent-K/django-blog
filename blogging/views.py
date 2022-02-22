@@ -14,6 +14,7 @@ def add_model(request):
         form = MyCommentForm(request.POST)
         if form.is_valid():
             model_instance = form.save(commit=False)
+            model_instance.published_date = timezone.now()
             model_instance.timestamp = timezone.now()
             model_instance.save()
             return redirect("/")
